@@ -1,0 +1,13 @@
+{
+  "name": "mitable-landing-page",
+  "private": true,
+  "scripts": {
+    "start": "serve -s . -l ${PORT:-3000}"
+  },
+  "dependencies": {
+    "serve": "^14.2.4"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

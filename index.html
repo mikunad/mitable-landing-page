@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mitable — Stop making AI your second job</title>
+  <meta name="description" content="Mitable automatically matches the way you work with the best AI tools and workflows, so you get expert-level results while you work." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ======================= NAV ======================= -->
+  <header class="nav" id="nav">
+    <div class="nav-inner">
+      <a class="logo" href="#">
+        <span class="logo-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 18V7.5L12 13L20 7.5V18" stroke="url(#lg)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+            <defs>
+              <linearGradient id="lg" x1="4" y1="7" x2="20" y2="18" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#5eead4"/><stop offset="1" stop-color="#818cf8"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </span>
+        Mitable
+      </a>
+      <nav class="nav-links">
+        <a href="#problem">Why</a>
+        <a href="#philosophy">How it works</a>
+        <a href="#recommendations">Recommendations</a>
+      </nav>
+      <div class="nav-cta">
+        <a href="#cta" class="btn btn-sm btn-primary">Join the beta</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ======================= HERO ======================= -->
+  <section class="hero">
+    <div class="hero-bg" aria-hidden="true">
+      <div class="hero-glow hero-glow-1"></div>
+      <div class="hero-glow hero-glow-2"></div>
+      <div class="hero-grid"></div>
+    </div>
+    <div class="container hero-inner">
+      <div class="hero-copy reveal">
+        <div class="badge">
+          <span class="badge-dot"></span>
+          Now in private beta
+        </div>
+        <h1>You shouldn't have to make AI your <em>hobby</em> to get the most out of it.</h1>
+        <p class="hero-sub">Stop spending your free time figuring out what AI can do. Mitable automatically matches the way you work with the best AI tools and workflows, so you get expert-level results while you work.</p>
+        <div class="hero-actions">
+          <a href="#cta" class="btn btn-primary btn-lg">Join the beta</a>
+          <a href="#philosophy" class="btn btn-ghost btn-lg">See how it works
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 3.5L10.5 8L6 12.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Looping hero animation -->
+      <div class="hero-visual reveal" data-delay="150">
+        <div class="hero-demo" id="heroDemo">
+          <div class="window">
+            <div class="window-bar">
+              <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+              <span class="window-title">Your work — as usual</span>
+            </div>
+            <div class="window-body">
+              <div class="chat-row">
+                <div class="avatar user-avatar">You</div>
+                <div class="chat-bubble">
+                  <span class="typed" id="heroTyped"></span><span class="caret" id="heroCaret"></span>
+                </div>
+              </div>
+              <div class="chat-row ai-row" id="heroAiRow">
+                <div class="avatar ai-avatar">AI</div>
+                <div class="chat-bubble ai-bubble">
+                  <span class="skeleton-line w80"></span>
+                  <span class="skeleton-line w60"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mitable suggestion card -->
+          <div class="mitable-card hero-card" id="heroCard">
+            <div class="mitable-card-accent"></div>
+            <div class="mitable-card-body">
+              <div class="mitable-card-header">
+                <span class="mitable-chip">
+                  <svg viewBox="0 0 24 24" width="12" height="12" fill="none"><path d="M4 18V7.5L12 13L20 7.5V18" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  Mitable
+                </span>
+                <span class="time-saved">~18 min saved</span>
+              </div>
+              <h4>There's a faster way</h4>
+              <p>This task is much easier in <strong>Cursor</strong> — it can refactor all 12 files at once.</p>
+              <div class="mitable-card-actions">
+                <button class="chip-btn chip-btn-primary" id="heroSwitch" type="button">Switch with Mitable</button>
+                <button class="chip-btn" type="button">Learn why</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- success state -->
+          <div class="hero-success" id="heroSuccess">
+            <span class="check-ring">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none"><path d="M5 12.5L10 17.5L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            Switched. Cursor opened, already configured.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= SECTION 2 · PROBLEM ======================= -->
+  <section class="section" id="problem">
+    <div class="container split">
+      <div class="split-copy reveal">
+        <div class="eyebrow">The problem</div>
+        <h2>Today, discovering what's possible with AI is still a manual process.</h2>
+        <p>Every week, people discover faster workflows, better prompts, new models and entirely new tools.</p>
+        <p>The problem isn't that these discoveries exist. It's that the only reliable way to find them today is to <strong>stumble across them yourself</strong>.</p>
+        <p class="muted">That usually means:</p>
+        <ul class="plain-list">
+          <li>Someone mentions it in Slack.</li>
+          <li>You see a LinkedIn post.</li>
+          <li>A coworker shares it.</li>
+          <li>A YouTube video pops up.</li>
+          <li>You finally have time to experiment.</li>
+        </ul>
+        <p>By the time you discover it, you could have spent <strong>weeks doing things the hard way</strong>.</p>
+      </div>
+
+      <div class="split-visual reveal" data-delay="150">
+        <div class="timeline-panel" id="timelinePanel">
+          <div class="timeline">
+            <div class="timeline-item" data-step="0">
+              <span class="timeline-icon slack">#</span>
+              <div class="timeline-text"><strong>Slack</strong><span>"have you tried this?"</span></div>
+              <span class="timeline-week">week 1</span>
+            </div>
+            <div class="timeline-item" data-step="1">
+              <span class="timeline-icon linkedin">in</span>
+              <div class="timeline-text"><strong>LinkedIn</strong><span>saved for later, never read</span></div>
+              <span class="timeline-week">week 2</span>
+            </div>
+            <div class="timeline-item" data-step="2">
+              <span class="timeline-icon youtube">▶</span>
+              <div class="timeline-text"><strong>YouTube</strong><span>a 24-minute tutorial</span></div>
+              <span class="timeline-week">week 3</span>
+            </div>
+            <div class="timeline-item" data-step="3">
+              <span class="timeline-icon coworker">@</span>
+              <div class="timeline-text"><strong>Coworker</strong><span>"oh, I've been using it for months"</span></div>
+              <span class="timeline-week">week 4</span>
+            </div>
+            <div class="timeline-item" data-step="4">
+              <span class="timeline-icon experiment">✳</span>
+              <div class="timeline-text"><strong>Experiment</strong><span>you finally find an evening</span></div>
+              <span class="timeline-week">week 6</span>
+            </div>
+            <div class="timeline-item timeline-item-end" data-step="5">
+              <span class="timeline-icon maybe">?</span>
+              <div class="timeline-text"><strong>Maybe it helps.</strong><span>weeks after everyone else</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="better-way reveal" data-delay="300">
+          <span class="better-way-line"></span>
+          There's a better way.
+          <span class="better-way-line"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= SECTION 3 · PHILOSOPHY ======================= -->
+  <section class="section" id="philosophy">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="eyebrow">Our philosophy</div>
+        <h2>Keep working. We'll step in when it actually helps.</h2>
+      </div>
+
+      <div class="philosophy-grid">
+        <!-- Card A: stay quiet -->
+        <div class="phil-card reveal">
+          <div class="phil-demo" id="quietDemo">
+            <div class="mini-window">
+              <div class="mini-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span></div>
+              <div class="mini-body">
+                <div class="mini-prompt"><span class="mini-label">You</span> Draft a follow-up email to the Acme team</div>
+                <div class="mini-answer" data-stage="answer">
+                  <span class="mini-label ai">AI</span>
+                  <span class="skeleton-line w90"></span>
+                  <span class="skeleton-line w70"></span>
+                  <span class="skeleton-line w50"></span>
+                </div>
+                <div class="quiet-check" data-stage="check">
+                  <span class="check-ring small">
+                    <svg viewBox="0 0 24 24" width="11" height="11" fill="none"><path d="M5 12.5L10 17.5L19 7" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </span>
+                  You're already using the best approach.
+                </div>
+              </div>
+            </div>
+          </div>
+          <h3>If you're already using the best approach…</h3>
+          <p class="phil-tagline">We stay quiet.</p>
+          <p class="muted">Nothing else happens. No popups, no "did you know", no noise.</p>
+        </div>
+
+        <!-- Card B: step in -->
+        <div class="phil-card reveal" data-delay="150">
+          <div class="phil-demo" id="stepDemo">
+            <div class="mini-window">
+              <div class="mini-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span></div>
+              <div class="mini-body">
+                <div class="mini-prompt"><span class="mini-label">You</span> Rename this component across the whole codebase</div>
+                <div class="mitable-card mini-mitable" data-stage="card">
+                  <div class="mitable-card-accent"></div>
+                  <div class="mitable-card-body">
+                    <div class="mitable-card-header">
+                      <span class="mitable-chip">
+                        <svg viewBox="0 0 24 24" width="12" height="12" fill="none"><path d="M4 18V7.5L12 13L20 7.5V18" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        Mitable
+                      </span>
+                      <span class="time-saved">~18 min saved</span>
+                    </div>
+                    <h4>There's a faster way</h4>
+                    <p>This task is much easier in <strong>Cursor</strong>.</p>
+                    <div class="mitable-card-actions">
+                      <button class="chip-btn chip-btn-primary" type="button">Switch with Mitable</button>
+                      <button class="chip-btn" type="button">Learn why</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="cursor-opening" data-stage="open">
+                  <span class="cursor-logo">⌘</span> Cursor opened — already configured.
+                </div>
+              </div>
+            </div>
+          </div>
+          <h3>If there's a better way…</h3>
+          <p class="phil-tagline">We'll show you.</p>
+          <p class="muted">One card. The reason, the time saved, and a one-click switch.</p>
+        </div>
+      </div>
+
+      <p class="phil-footnote reveal">That's it. No third example — two communicate the philosophy better than six.</p>
+    </div>
+  </section>
+
+  <!-- ======================= SECTION 4 · RECOMMENDATIONS ======================= -->
+  <section class="section" id="recommendations">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="eyebrow">What you get</div>
+        <h2>Expert AI guidance without the guesswork.</h2>
+      </div>
+
+      <div class="rec-grid">
+        <div class="rec-card reveal">
+          <div class="rec-mock">
+            <div class="rec-mock-card">
+              <div class="rec-mock-head"><span class="rec-dot tool"></span> Better tool</div>
+              <div class="rec-mock-quote">"This would be much easier in Cursor."</div>
+              <div class="rec-mock-meta">
+                <span class="tool-pill from">ChatGPT</span>
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9.5 4.5M13 8L9.5 11.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span class="tool-pill to">Cursor</span>
+              </div>
+            </div>
+          </div>
+          <h3>Better tool</h3>
+          <p class="muted">When the tool you're in isn't the tool for the job, we point you to the one that is.</p>
+        </div>
+
+        <div class="rec-card reveal" data-delay="120">
+          <div class="rec-mock">
+            <div class="rec-mock-card">
+              <div class="rec-mock-head"><span class="rec-dot workflow"></span> Better workflow</div>
+              <div class="rec-mock-quote">"You've done this five times this week. Let's automate it."</div>
+              <div class="rec-mock-meta repeat-meta">
+                <span class="repeat-tick"></span><span class="repeat-tick"></span><span class="repeat-tick"></span><span class="repeat-tick"></span><span class="repeat-tick"></span>
+                <span class="repeat-label">→ automated</span>
+              </div>
+            </div>
+          </div>
+          <h3>Better workflow</h3>
+          <p class="muted">Repetition is a signal. We spot it and hand you the automation.</p>
+        </div>
+
+        <div class="rec-card reveal" data-delay="240">
+          <div class="rec-mock">
+            <div class="rec-mock-card">
+              <div class="rec-mock-head"><span class="rec-dot prompt"></span> Better prompt</div>
+              <div class="rec-mock-quote">"Here's a prompt structure that gets dramatically better results."</div>
+              <div class="rec-mock-meta">
+                <span class="prompt-diff old">write summary</span>
+                <span class="prompt-diff new">role + context + format</span>
+              </div>
+            </div>
+          </div>
+          <h3>Better prompt</h3>
+          <p class="muted">Small changes in structure, dramatic changes in output quality.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= SECTION 5 · OUTCOME ======================= -->
+  <section class="section section-outcome" id="outcome">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="eyebrow">The outcome</div>
+        <h2>Less time figuring AI out.<br /><span class="grad-text">More time doing what matters.</span></h2>
+      </div>
+
+      <div class="outcome-grid">
+        <div class="outcome-col outcome-less reveal">
+          <h3>Less time</h3>
+          <ul>
+            <li>Watching tutorials</li>
+            <li>Searching Reddit</li>
+            <li>Saving LinkedIn posts</li>
+            <li>Fighting with prompts</li>
+            <li>Trying every model</li>
+          </ul>
+        </div>
+        <div class="outcome-divider reveal" data-delay="150" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M12 4V20M12 20L5.5 13.5M12 20L18.5 13.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="outcome-col outcome-more reveal" data-delay="150">
+          <h3>More time</h3>
+          <ul>
+            <li>Shipping</li>
+            <li>Solving interesting problems</li>
+            <li>Talking to customers</li>
+            <li>Thinking strategically</li>
+            <li>Going home earlier</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= SECTION 6 · TRUST ======================= -->
+  <section class="section section-trust" id="trust">
+    <div class="container narrow">
+      <div class="section-head reveal">
+        <div class="eyebrow">Trust</div>
+        <h2>Built to help — not interrupt.</h2>
+        <p class="section-sub">Most AI products try to be involved in everything. Mitable only steps in when it's genuinely worth your attention.</p>
+      </div>
+      <div class="trust-rows">
+        <div class="trust-row reveal">
+          <span class="trust-icon quiet-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none"><path d="M4 10V14H8L13 19V5L8 10H4Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M17 9L21 15M21 9L17 15" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+          </span>
+          <div>
+            <h4>If you're already using the best approach…</h4>
+            <p class="muted">You won't hear from us.</p>
+          </div>
+        </div>
+        <div class="trust-row reveal" data-delay="120">
+          <span class="trust-icon spark-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none"><path d="M12 3L13.9 9.1L20 11L13.9 12.9L12 19L10.1 12.9L4 11L10.1 9.1L12 3Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+          </span>
+          <div>
+            <h4>If there's a dramatically better one…</h4>
+            <p class="muted">You'll know exactly why.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= FINAL CTA ======================= -->
+  <section class="section section-cta" id="cta">
+    <div class="cta-glow" aria-hidden="true"></div>
+    <div class="container narrow">
+      <div class="reveal">
+        <h2 class="cta-title">Stop making AI your second job.</h2>
+        <p class="section-sub">Let Mitable bring the best AI workflows to you instead.</p>
+        <form class="cta-form" id="ctaForm" autocomplete="off">
+          <input type="email" placeholder="you@company.com" aria-label="Email address" required />
+          <button type="submit" class="btn btn-primary btn-lg">Join the beta</button>
+        </form>
+        <p class="cta-note" id="ctaNote">No spam. Just an invite when your spot opens up.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span class="footer-logo">Mitable</span>
+      <span class="muted">© 2026 Mitable. All rights reserved.</span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
