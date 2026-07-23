@@ -1,411 +1,313 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mitable — Stop making AI your second job</title>
-  <meta name="description" content="Mitable automatically matches the way you work with the best AI tools and workflows, so you get expert-level results while you work." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
 </head>
 <body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&amp;family=Hanken+Grotesk:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:#FAFAFB}
+  a{color:inherit;text-decoration:none}
+  a:hover{opacity:.72}
+  input:focus{outline:none}
+  @keyframes blink{0%,49%{opacity:1}50%,100%{opacity:0}}
+  @keyframes cardIn{0%{opacity:0;transform:translateY(22px)}9%{opacity:1;transform:translateY(0)}86%{opacity:1;transform:translateY(0)}94%{opacity:0;transform:translateY(-8px)}100%{opacity:0}}
+  @keyframes typeIn{0%{opacity:0}6%{opacity:1}100%{opacity:1}}
+  @keyframes checkCycle{0%,22%{opacity:0;transform:scale(.5)}32%{opacity:1;transform:scale(1.15)}42%,86%{opacity:1;transform:scale(1)}94%,100%{opacity:0}}
+  @keyframes knobOn{0%,34%{transform:translateX(0)}48%,100%{transform:translateX(20px)}}
+  @keyframes trackOn{0%,34%{background:#DEDEE6}48%,100%{background:#4A4AF0}}
+  @keyframes barFill{0%,18%{width:0%}62%,100%{width:100%}}
+</style>
+</helmet>
+<div style="font-family:'Hanken Grotesk',system-ui,sans-serif;color:#0C0C0F;background:#FAFAFB;-webkit-font-smoothing:antialiased">
 
-  <!-- ======================= NAV ======================= -->
-  <header class="nav" id="nav">
-    <div class="nav-inner">
-      <a class="logo" href="#">
-        <span class="logo-mark" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M4 18V7.5L12 13L20 7.5V18" stroke="url(#lg)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
-            <defs>
-              <linearGradient id="lg" x1="4" y1="7" x2="20" y2="18" gradientUnits="userSpaceOnUse">
-                <stop stop-color="#5eead4"/><stop offset="1" stop-color="#818cf8"/>
-              </linearGradient>
-            </defs>
-          </svg>
-        </span>
-        Mitable
-      </a>
-      <nav class="nav-links">
-        <a href="#problem">Why</a>
-        <a href="#philosophy">How it works</a>
-        <a href="#recommendations">Recommendations</a>
-      </nav>
-      <div class="nav-cta">
-        <a href="#cta" class="btn btn-sm btn-primary">Join the beta</a>
+  <nav style="display:flex;align-items:center;justify-content:space-between;padding:20px 56px;position:sticky;top:0;background:rgba(250,250,251,.82);backdrop-filter:blur(12px);border-bottom:1px solid #EAEAEF;z-index:50">
+    <div style="display:flex;align-items:center;gap:9px">
+      <div style="width:23px;height:23px;border-radius:6px;background:#0C0C0F;display:flex;align-items:center;justify-content:center"><div style="width:8px;height:8px;background:#4A4AF0;transform:rotate(45deg)"></div></div>
+      <span style="font-family:'Bricolage Grotesque',sans-serif;font-size:20px;font-weight:700;letter-spacing:-.02em">Mitable</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:26px">
+      <a href="#how" style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#6B6B76">How it works</a>
+      <a href="#cta" style="font-size:14px;font-weight:600;background:#0C0C0F;color:#fff;padding:10px 18px;border-radius:9px">Join the waitlist</a>
+    </div>
+  </nav>
+
+  <header style="display:grid;grid-template-columns:1.02fr .98fr;gap:52px;align-items:center;max-width:1200px;margin:0 auto;padding:88px 56px 96px">
+    <div style="display:flex;flex-direction:column;gap:26px">
+      <div style="display:inline-flex;align-items:center;gap:8px;align-self:flex-start;border:1px solid #DEDEF0;background:#fff;color:#4A4AF0;font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:500;padding:6px 12px;border-radius:8px"><span style="width:6px;height:6px;border-radius:50%;background:#4A4AF0"></span>PRIVATE BETA · NOW OPEN</div>
+      <h1 style="font-family:'Bricolage Grotesque',sans-serif;font-size:54px;line-height:1.02;font-weight:700;letter-spacing:-.03em;text-wrap:balance">You already know a better way to use AI. You're just not using it.</h1>
+      <p style="font-size:19px;line-height:1.55;color:#585863;max-width:31em">Discovering a better workflow is easy. Finding the time to learn it and build the habit isn't. Mitable brings the tools, workflows, and prompts you've been meaning to try into the work you're already doing.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <a href="#cta" style="font-size:16px;font-weight:600;background:#0C0C0F;color:#fff;padding:15px 26px;border-radius:11px">Join the waitlist</a>
+        <a href="#how" style="font-size:16px;font-weight:600;background:#fff;color:#0C0C0F;padding:15px 26px;border-radius:11px;border:1px solid #E2E2E9">See how it works →</a>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;justify-content:center">
+      <div style="width:100%;max-width:470px;background:#0C0C0F;border-radius:14px;border:1px solid #23232B;box-shadow:0 34px 70px -34px rgba(12,12,15,.6);overflow:hidden">
+        <div style="display:flex;align-items:center;gap:9px;padding:13px 16px;border-bottom:1px solid #1E1E26">
+          <svg viewBox="0 0 100 100" width="18" height="18"><g fill="#CC785C" transform="translate(50,50)"><rect x="-4" y="-44" width="8" height="88" rx="4"></rect><rect x="-4" y="-44" width="8" height="88" rx="4" transform="rotate(30)"></rect><rect x="-4" y="-44" width="8" height="88" rx="4" transform="rotate(60)"></rect><rect x="-4" y="-44" width="8" height="88" rx="4" transform="rotate(90)"></rect><rect x="-4" y="-44" width="8" height="88" rx="4" transform="rotate(120)"></rect><rect x="-4" y="-44" width="8" height="88" rx="4" transform="rotate(150)"></rect></g></svg>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#CFCFDA">Claude</span>
+          <span style="margin-left:auto;font-family:'JetBrains Mono',monospace;font-size:11px;color:#5E5E6B">New chat</span>
+        </div>
+        <div style="padding:18px 18px 8px;display:flex;flex-direction:column;gap:12px">
+          <div style="align-self:flex-end;background:#23232B;color:#EDEDF2;font-size:13.5px;line-height:1.45;padding:10px 13px;border-radius:12px 12px 3px 12px;max-width:84%">Draft a launch email for our new analytics dashboard to send to beta users.</div>
+          <div style="display:flex;gap:9px;align-items:flex-start">
+            <svg viewBox="0 0 100 100" width="15" height="15" style="margin-top:3px;flex:none"><g fill="#CC785C" transform="translate(50,50)"><rect x="-5" y="-44" width="10" height="88" rx="5"></rect><rect x="-5" y="-44" width="10" height="88" rx="5" transform="rotate(45)"></rect><rect x="-5" y="-44" width="10" height="88" rx="5" transform="rotate(90)"></rect><rect x="-5" y="-44" width="10" height="88" rx="5" transform="rotate(135)"></rect></g></svg>
+            <div style="display:flex;gap:4px;padding:6px 0"><span style="width:6px;height:6px;border-radius:50%;background:#5E5E6B;animation:blink 1.2s step-end infinite"></span><span style="width:6px;height:6px;border-radius:50%;background:#5E5E6B;animation:blink 1.2s step-end infinite;animation-delay:.2s"></span><span style="width:6px;height:6px;border-radius:50%;background:#5E5E6B;animation:blink 1.2s step-end infinite;animation-delay:.4s"></span></div>
+          </div>
+        </div>
+        <div style="margin:6px 16px 16px;background:#15151E;border:1px solid #2A2A6A;border-radius:11px;padding:15px;animation:cardIn 7.5s ease-in-out infinite">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.05em;color:#9B9BFF;margin-bottom:6px">MITABLE · THERE'S A FASTER WAY</div>
+          <div style="font-size:14px;line-height:1.45;color:#EDEDF2;margin-bottom:13px">You write launch emails often. Reuse the template we saved for your team to get a better draft in one shot.</div>
+          <div style="display:flex;align-items:center;justify-content:space-between"><span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#8686A0">Saved <b style="color:#fff">18 min</b></span><div style="display:flex;gap:8px"><span style="font-size:13px;font-weight:600;color:#B8B8FF">Learn why</span><span style="font-size:13px;font-weight:600;background:#4A4AF0;color:#fff;padding:7px 13px;border-radius:8px">Use template</span></div></div>
+        </div>
       </div>
     </div>
   </header>
 
-  <!-- ======================= HERO ======================= -->
-  <section class="hero">
-    <div class="hero-bg" aria-hidden="true">
-      <div class="hero-glow hero-glow-1"></div>
-      <div class="hero-glow hero-glow-2"></div>
-      <div class="hero-grid"></div>
+  <!-- PROBLEM -->
+  <section style="border-top:1px solid #EAEAEF;background:#fff">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;max-width:1200px;margin:0 auto;padding:92px 56px">
+    <div style="display:flex;flex-direction:column;gap:20px">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.08em;color:#4A4AF0">01 — THE PROBLEM</span>
+      <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:38px;line-height:1.1;font-weight:700;letter-spacing:-.025em">The best AI workflow is useless unless it becomes your workflow.</h2>
+      <p style="font-size:17px;line-height:1.6;color:#585863">Every week, you save a game-changing prompt, bookmark a trending tool, or star a clever workflow. But when you sit down to do real work, you go right back to your old habits.</p>
+      <p style="font-size:17px;line-height:1.6;color:#585863">It's not because those ideas aren't valuable. It's because learning new software and changing how you work takes time and energy you don't have.</p>
     </div>
-    <div class="container hero-inner">
-      <div class="hero-copy reveal">
-        <div class="badge">
-          <span class="badge-dot"></span>
-          Now in private beta
+    <div style="background:#FAFAFB;border-radius:14px;border:1px solid #E7E7EC;padding:30px 32px">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.06em;color:#9A9AA4;margin-bottom:20px">WORSE YET</div>
+      <div style="display:flex;flex-direction:column;gap:20px">
+        <div style="display:flex;flex-direction:column;gap:6px;padding-bottom:20px;border-bottom:1px solid #EDEDF1">
+          <span style="font-size:17px;font-weight:600;color:#0C0C0F">The landscape moves too fast.</span>
+          <span style="font-size:15px;line-height:1.55;color:#585863">By the time you finally find the energy to configure a saved workflow weeks later, the tools themselves have already changed.</span>
         </div>
-        <h1>You shouldn't have to make AI your <em>hobby</em> to get the most out of it.</h1>
-        <p class="hero-sub">Stop spending your free time figuring out what AI can do. Mitable automatically matches the way you work with the best AI tools and workflows, so you get expert-level results while you work.</p>
-        <div class="hero-actions">
-          <a href="#cta" class="btn btn-primary btn-lg">Join the beta</a>
-          <a href="#philosophy" class="btn btn-ghost btn-lg">See how it works
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 3.5L10.5 8L6 12.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <span style="font-size:17px;font-weight:600;color:#0C0C0F">Paid power goes unused.</span>
+          <span style="font-size:15px;line-height:1.55;color:#585863">You keep doing things the hard, slow way — leaving real capability on the table from AI subscriptions you're already paying for.</span>
         </div>
-      </div>
-
-      <!-- Looping hero animation -->
-      <div class="hero-visual reveal" data-delay="150">
-        <div class="hero-demo" id="heroDemo">
-          <div class="window">
-            <div class="window-bar">
-              <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
-              <span class="window-title">Your work — as usual</span>
-            </div>
-            <div class="window-body">
-              <div class="chat-row">
-                <div class="avatar user-avatar">You</div>
-                <div class="chat-bubble">
-                  <span class="typed" id="heroTyped"></span><span class="caret" id="heroCaret"></span>
-                </div>
-              </div>
-              <div class="chat-row ai-row" id="heroAiRow">
-                <div class="avatar ai-avatar">AI</div>
-                <div class="chat-bubble ai-bubble">
-                  <span class="skeleton-line w80"></span>
-                  <span class="skeleton-line w60"></span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Mitable suggestion card -->
-          <div class="mitable-card hero-card" id="heroCard">
-            <div class="mitable-card-accent"></div>
-            <div class="mitable-card-body">
-              <div class="mitable-card-header">
-                <span class="mitable-chip">
-                  <svg viewBox="0 0 24 24" width="12" height="12" fill="none"><path d="M4 18V7.5L12 13L20 7.5V18" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  Mitable
-                </span>
-                <span class="time-saved">~18 min saved</span>
-              </div>
-              <h4>There's a faster way</h4>
-              <p>This task is much easier in <strong>Cursor</strong> — it can refactor all 12 files at once.</p>
-              <div class="mitable-card-actions">
-                <button class="chip-btn chip-btn-primary" id="heroSwitch" type="button">Switch with Mitable</button>
-                <button class="chip-btn" type="button">Learn why</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- success state -->
-          <div class="hero-success" id="heroSuccess">
-            <span class="check-ring">
-              <svg viewBox="0 0 24 24" width="14" height="14" fill="none"><path d="M5 12.5L10 17.5L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </span>
-            Switched. Cursor opened, already configured.
-          </div>
-        </div>
+        <div style="margin-top:4px;padding:13px 15px;background:#F1F1FC;border-radius:9px;font-size:15px;color:#4A4AF0;font-weight:600">There's a better way.</div>
       </div>
     </div>
+  </div>
   </section>
 
-  <!-- ======================= SECTION 2 · PROBLEM ======================= -->
-  <section class="section" id="problem">
-    <div class="container split">
-      <div class="split-copy reveal">
-        <div class="eyebrow">The problem</div>
-        <h2>Today, discovering what's possible with AI is still a manual process.</h2>
-        <p>Every week, people discover faster workflows, better prompts, new models and entirely new tools.</p>
-        <p>The problem isn't that these discoveries exist. It's that the only reliable way to find them today is to <strong>stumble across them yourself</strong>.</p>
-        <p class="muted">That usually means:</p>
-        <ul class="plain-list">
-          <li>Someone mentions it in Slack.</li>
-          <li>You see a LinkedIn post.</li>
-          <li>A coworker shares it.</li>
-          <li>A YouTube video pops up.</li>
-          <li>You finally have time to experiment.</li>
-        </ul>
-        <p>By the time you discover it, you could have spent <strong>weeks doing things the hard way</strong>.</p>
-      </div>
-
-      <div class="split-visual reveal" data-delay="150">
-        <div class="timeline-panel" id="timelinePanel">
-          <div class="timeline">
-            <div class="timeline-item" data-step="0">
-              <span class="timeline-icon slack">#</span>
-              <div class="timeline-text"><strong>Slack</strong><span>"have you tried this?"</span></div>
-              <span class="timeline-week">week 1</span>
-            </div>
-            <div class="timeline-item" data-step="1">
-              <span class="timeline-icon linkedin">in</span>
-              <div class="timeline-text"><strong>LinkedIn</strong><span>saved for later, never read</span></div>
-              <span class="timeline-week">week 2</span>
-            </div>
-            <div class="timeline-item" data-step="2">
-              <span class="timeline-icon youtube">▶</span>
-              <div class="timeline-text"><strong>YouTube</strong><span>a 24-minute tutorial</span></div>
-              <span class="timeline-week">week 3</span>
-            </div>
-            <div class="timeline-item" data-step="3">
-              <span class="timeline-icon coworker">@</span>
-              <div class="timeline-text"><strong>Coworker</strong><span>"oh, I've been using it for months"</span></div>
-              <span class="timeline-week">week 4</span>
-            </div>
-            <div class="timeline-item" data-step="4">
-              <span class="timeline-icon experiment">✳</span>
-              <div class="timeline-text"><strong>Experiment</strong><span>you finally find an evening</span></div>
-              <span class="timeline-week">week 6</span>
-            </div>
-            <div class="timeline-item timeline-item-end" data-step="5">
-              <span class="timeline-icon maybe">?</span>
-              <div class="timeline-text"><strong>Maybe it helps.</strong><span>weeks after everyone else</span></div>
-            </div>
-          </div>
+  <!-- PHILOSOPHY -->
+  <section id="how" style="border-top:1px solid #EAEAEF">
+  <div style="max-width:1200px;margin:0 auto;padding:92px 56px">
+    <div style="text-align:center;max-width:40em;margin:0 auto 48px;display:flex;flex-direction:column;gap:12px">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.08em;color:#4A4AF0">02 — THE SOLUTION</span>
+      <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:38px;line-height:1.1;font-weight:700;letter-spacing:-.025em">Better workflows shouldn't need adopting. They should just show up in the one you have.</h2>
+      <p style="font-size:17px;line-height:1.6;color:#585863">No Reddit thread. No X post. No YouTube video. Mitable quietly notices what you're trying to accomplish and brings the optimal workflow directly into the tool you're currently using — configured and ready to execute in one click.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:22px;max-width:940px;margin:0 auto">
+      <div style="background:#fff;border-radius:14px;border:1px solid #E7E7EC;padding:28px;display:flex;flex-direction:column;gap:18px">
+        <div><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:21px;font-weight:600;margin-bottom:5px">Already using the best approach?</div><div style="font-size:16px;color:#585863">We stay out of your way.</div></div>
+        <div style="background:#0C0C0F;border-radius:11px;padding:16px;display:flex;flex-direction:column;gap:10px;min-height:158px">
+          <div style="align-self:flex-end;background:#23232B;color:#EDEDF2;font-size:13px;padding:9px 12px;border-radius:11px 11px 3px 11px;max-width:82%">Summarize this thread into 3 bullets</div>
+          <div style="display:flex;gap:8px;align-items:flex-start"><svg viewBox="0 0 100 100" width="14" height="14" style="margin-top:2px;flex:none"><g fill="#CC785C" transform="translate(50,50)"><rect x="-6" y="-44" width="12" height="88" rx="6"></rect><rect x="-6" y="-44" width="12" height="88" rx="6" transform="rotate(45)"></rect><rect x="-6" y="-44" width="12" height="88" rx="6" transform="rotate(90)"></rect><rect x="-6" y="-44" width="12" height="88" rx="6" transform="rotate(135)"></rect></g></svg><div style="background:#1A1A22;color:#CFCFDA;font-size:13px;padding:9px 12px;border-radius:11px 11px 11px 3px;max-width:84%">Done — here are your three bullets.</div></div>
+          <div style="display:flex;align-items:center;gap:8px;margin-top:auto;animation:checkCycle 6s ease-in-out infinite"><span style="font-size:13px;font-weight:600;color:#9B9BFF"><br></span></div>
         </div>
-        <div class="better-way reveal" data-delay="300">
-          <span class="better-way-line"></span>
-          There's a better way.
-          <span class="better-way-line"></span>
+      </div>
+      <div style="background:#fff;border-radius:14px;border:1px solid #E7E7EC;padding:28px;display:flex;flex-direction:column;gap:18px">
+        <div><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:21px;font-weight:600;margin-bottom:5px">There's a faster, better way?</div><div style="font-size:16px;color:#585863">We bring it to you right when you need it.</div></div>
+        <div style="background:#0C0C0F;border-radius:11px;padding:16px;display:flex;flex-direction:column;gap:10px;min-height:158px">
+          <div style="align-self:flex-end;background:#23232B;color:#EDEDF2;font-size:13px;padding:9px 12px;border-radius:11px 11px 3px 11px;max-width:82%">Design a landing page for my product</div>
+          <div style="margin-top:auto;background:#15151E;color:#fff;border:1px solid #2A2A6A;border-radius:11px;padding:14px;animation:cardIn 6s ease-in-out infinite">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.04em;color:#9B9BFF;margin-bottom:6px">THERE'S A FASTER WAY</div>
+            <div style="font-size:13.5px;line-height:1.4;margin-bottom:11px">This is much easier in <b>Claude Design</b> — it can edit every file at once.</div>
+            <div style="display:flex;align-items:center;justify-content:space-between"><span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#8686A0">Saves <b style="color:#fff">~18 min</b></span><span style="font-size:12.5px;font-weight:600;background:#4A4AF0;padding:7px 12px;border-radius:8px">Switch</span></div>
+          </div>
         </div>
       </div>
     </div>
+  </div>
   </section>
 
-  <!-- ======================= SECTION 3 · PHILOSOPHY ======================= -->
-  <section class="section" id="philosophy">
-    <div class="container">
-      <div class="section-head reveal">
-        <div class="eyebrow">Our philosophy</div>
-        <h2>Keep working. We'll step in when it actually helps.</h2>
-      </div>
-
-      <div class="philosophy-grid">
-        <!-- Card A: stay quiet -->
-        <div class="phil-card reveal">
-          <div class="phil-demo" id="quietDemo">
-            <div class="mini-window">
-              <div class="mini-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span></div>
-              <div class="mini-body">
-                <div class="mini-prompt"><span class="mini-label">You</span> Draft a follow-up email to the Acme team</div>
-                <div class="mini-answer" data-stage="answer">
-                  <span class="mini-label ai">AI</span>
-                  <span class="skeleton-line w90"></span>
-                  <span class="skeleton-line w70"></span>
-                  <span class="skeleton-line w50"></span>
-                </div>
-                <div class="quiet-check" data-stage="check">
-                  <span class="check-ring small">
-                    <svg viewBox="0 0 24 24" width="11" height="11" fill="none"><path d="M5 12.5L10 17.5L19 7" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  </span>
-                  You're already using the best approach.
-                </div>
-              </div>
-            </div>
-          </div>
-          <h3>If you're already using the best approach…</h3>
-          <p class="phil-tagline">We stay quiet.</p>
-          <p class="muted">Nothing else happens. No popups, no "did you know", no noise.</p>
-        </div>
-
-        <!-- Card B: step in -->
-        <div class="phil-card reveal" data-delay="150">
-          <div class="phil-demo" id="stepDemo">
-            <div class="mini-window">
-              <div class="mini-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span></div>
-              <div class="mini-body">
-                <div class="mini-prompt"><span class="mini-label">You</span> Rename this component across the whole codebase</div>
-                <div class="mitable-card mini-mitable" data-stage="card">
-                  <div class="mitable-card-accent"></div>
-                  <div class="mitable-card-body">
-                    <div class="mitable-card-header">
-                      <span class="mitable-chip">
-                        <svg viewBox="0 0 24 24" width="12" height="12" fill="none"><path d="M4 18V7.5L12 13L20 7.5V18" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                        Mitable
-                      </span>
-                      <span class="time-saved">~18 min saved</span>
-                    </div>
-                    <h4>There's a faster way</h4>
-                    <p>This task is much easier in <strong>Cursor</strong>.</p>
-                    <div class="mitable-card-actions">
-                      <button class="chip-btn chip-btn-primary" type="button">Switch with Mitable</button>
-                      <button class="chip-btn" type="button">Learn why</button>
-                    </div>
-                  </div>
-                </div>
-                <div class="cursor-opening" data-stage="open">
-                  <span class="cursor-logo">⌘</span> Cursor opened — already configured.
-                </div>
-              </div>
-            </div>
-          </div>
-          <h3>If there's a better way…</h3>
-          <p class="phil-tagline">We'll show you.</p>
-          <p class="muted">One card. The reason, the time saved, and a one-click switch.</p>
-        </div>
-      </div>
-
-      <p class="phil-footnote reveal">That's it. No third example — two communicate the philosophy better than six.</p>
+  <!-- WORKS WITH -->
+  <section style="border-top:1px solid #EAEAEF;background:#fff">
+  <div style="max-width:1200px;margin:0 auto;padding:92px 56px">
+    <div style="text-align:center;max-width:42em;margin:0 auto 48px;display:flex;flex-direction:column;gap:14px">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.08em;color:#4A4AF0">WORKS WITH WHAT YOU ALREADY PAY FOR</span>
+      <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:38px;line-height:1.1;font-weight:700;letter-spacing:-.025em">No new subscription. No new ecosystem to figure out.</h2>
+      <p style="font-size:17px;line-height:1.6;color:#585863">Mitable plugs into the platforms you already pay for and use daily — maximizing the value of your existing stack before ever asking you to switch.</p>
     </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:22px;max-width:1000px;margin:0 auto">
+      <div style="background:#FAFAFB;border-radius:14px;border:1px solid #E7E7EC;padding:28px;display:flex;flex-direction:column;gap:12px">
+        <svg viewBox="0 0 100 100" width="26" height="26"><g fill="#CC785C" transform="translate(50,50)"><rect x="-4" y="-44" width="8" height="88" rx="4"></rect><rect x="-4" y="-44" width="8" height="88" rx="4" transform="rotate(30)"></rect><rect x="-4" y="-44" width="8" height="88" rx="4" transform="rotate(60)"></rect><rect x="-4" y="-44" width="8" height="88" rx="4" transform="rotate(90)"></rect><rect x="-4" y="-44" width="8" height="88" rx="4" transform="rotate(120)"></rect><rect x="-4" y="-44" width="8" height="88" rx="4" transform="rotate(150)"></rect></g></svg>
+        <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:19px;font-weight:600">The Claude ecosystem</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:1.6;color:#6B6B76">Claude · Projects · Artifacts · Claude Code</div>
+      </div>
+      <div style="background:#FAFAFB;border-radius:14px;border:1px solid #E7E7EC;padding:28px;display:flex;flex-direction:column;gap:12px">
+        <svg viewBox="0 0 24 24" width="26" height="26" fill="#0C0C0F"><path d="M22.28 9.82a5.98 5.98 0 0 0-.52-4.91 6.05 6.05 0 0 0-6.51-2.9A6 6 0 0 0 4.98 4.18a5.98 5.98 0 0 0-4 2.9 6.05 6.05 0 0 0 .74 7.1 5.98 5.98 0 0 0 .51 4.9 6.05 6.05 0 0 0 6.52 2.9A6 6 0 0 0 19.02 19.8a5.98 5.98 0 0 0 4-2.9 6.05 6.05 0 0 0-.74-7.09zM13.4 21.1a4.48 4.48 0 0 1-2.88-1.04l.14-.08 4.78-2.76a.78.78 0 0 0 .4-.68v-6.74l2.02 1.17a.07.07 0 0 1 .04.06v5.58a4.5 4.5 0 0 1-4.5 4.49zM3.74 16.97a4.47 4.47 0 0 1-.54-3.01l.14.08 4.78 2.76a.78.78 0 0 0 .78 0l5.84-3.37v2.33a.07.07 0 0 1-.03.06l-4.83 2.79a4.5 4.5 0 0 1-6.14-1.64zm-1.26-10.4a4.48 4.48 0 0 1 2.35-1.97v5.68a.78.78 0 0 0 .39.68l5.83 3.36-2.02 1.17a.07.07 0 0 1-.07 0L4.53 12.9a4.5 4.5 0 0 1-2.05-6.34zm16.6 3.86l-5.84-3.4L15.26 5.7a.07.07 0 0 1 .07 0l4.83 2.79a4.5 4.5 0 0 1-.68 8.12v-5.69a.78.78 0 0 0-.4-.68zm2.01-3.03l-.14-.09-4.77-2.78a.78.78 0 0 0-.79 0L9.75 8.9V6.57a.07.07 0 0 1 .03-.06l4.83-2.79a4.5 4.5 0 0 1 6.68 4.66zM8.65 12.1L6.63 10.94a.07.07 0 0 1-.03-.06V5.3a4.5 4.5 0 0 1 7.38-3.45l-.14.08L9.05 4.7a.78.78 0 0 0-.4.68zm1.1-2.36l2.6-1.5 2.6 1.5v3l-2.6 1.5-2.6-1.5z"></path></svg>
+        <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:19px;font-weight:600">The ChatGPT ecosystem</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:1.6;color:#6B6B76">ChatGPT · Custom GPTs · Codex</div>
+      </div>
+      <div style="background:#FAFAFB;border-radius:14px;border:1px solid #E7E7EC;padding:28px;display:flex;flex-direction:column;gap:12px">
+        <div style="width:26px;height:26px;border-radius:7px;background:#0C0C0F;display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Bricolage Grotesque',sans-serif;font-size:15px;font-weight:800">C</div>
+        <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:19px;font-weight:600">Cursor</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:1.6;color:#6B6B76">For deep context and code workflows</div>
+      </div>
+    </div>
+  </div>
   </section>
 
-  <!-- ======================= SECTION 4 · RECOMMENDATIONS ======================= -->
-  <section class="section" id="recommendations">
-    <div class="container">
-      <div class="section-head reveal">
-        <div class="eyebrow">What you get</div>
-        <h2>Expert AI guidance without the guesswork.</h2>
+  <!-- RECOMMENDATIONS -->
+  <section style="border-top:1px solid #EAEAEF;background:#fff">
+  <div style="max-width:1200px;margin:0 auto;padding:92px 56px 40px">
+    <div style="text-align:center;max-width:40em;margin:0 auto 20px;display:flex;flex-direction:column;gap:12px">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.08em;color:#4A4AF0">03 — HOW MITABLE HELPS</span>
+      <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:38px;line-height:1.1;font-weight:700;letter-spacing:-.025em">Better tool. Better workflow. Better prompt.</h2>
+    </div>
+  </div>
+  <div style="border-top:1px solid #EEEEF2;margin-top:24px">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;max-width:1200px;margin:0 auto;padding:72px 56px">
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.06em;color:#4A4AF0">BETTER TOOL</span>
+        <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-size:32px;line-height:1.08;font-weight:700;letter-spacing:-.02em">Use the tool built for the job.</h3>
+        <p style="font-size:17px;line-height:1.6;color:#585863">Some tasks are simply faster elsewhere. Mitable recommends the right tool and carries your full context over so you don't lose your place.</p>
       </div>
+      <div style="display:flex;justify-content:center">
+        <div style="width:100%;max-width:460px;background:#0C0C0F;border-radius:14px;border:1px solid #23232B;box-shadow:0 30px 60px -34px rgba(12,12,15,.55);overflow:hidden">
+          <div style="display:flex;align-items:center;gap:9px;padding:12px 15px;border-bottom:1px solid #1E1E26"><svg viewBox="0 0 100 100" width="17" height="17"><g fill="#CC785C" transform="translate(50,50)"><rect x="-4" y="-44" width="8" height="88" rx="4"></rect><rect x="-4" y="-44" width="8" height="88" rx="4" transform="rotate(30)"></rect><rect x="-4" y="-44" width="8" height="88" rx="4" transform="rotate(60)"></rect><rect x="-4" y="-44" width="8" height="88" rx="4" transform="rotate(90)"></rect><rect x="-4" y="-44" width="8" height="88" rx="4" transform="rotate(120)"></rect><rect x="-4" y="-44" width="8" height="88" rx="4" transform="rotate(150)"></rect></g></svg><span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#CFCFDA">Claude</span></div>
+          <div style="padding:16px 16px 8px;display:flex;flex-direction:column;gap:10px">
+            <div style="align-self:flex-end;background:#23232B;color:#EDEDF2;font-size:13px;padding:9px 12px;border-radius:11px 11px 3px 11px;max-width:84%">Refactor this component and add tests across all 6 files</div>
+          </div>
+          <div style="margin:4px 16px 16px;background:#15151E;border:1px solid #2A2A6A;border-radius:11px;padding:15px;animation:cardIn 6.5s ease-in-out infinite">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.05em;color:#9B9BFF;margin-bottom:9px">MITABLE · BETTER TOOL</div>
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:11px"><div style="width:30px;height:30px;border-radius:8px;background:#fff;display:flex;align-items:center;justify-content:center;color:#0C0C0F;font-size:14px;font-weight:800;flex:none">C</div><div style="font-size:13.5px;line-height:1.35;color:#EDEDF2">This is much easier in <b>Cursor</b> — edit every file at once.</div></div>
+            <div style="display:flex;align-items:center;justify-content:space-between;background:#0C0C0F;border:1px solid #23232B;border-radius:9px;padding:9px 12px"><span style="font-size:12.5px;color:#B8B8C4">Import your config &amp; open</span><span style="width:34px;height:20px;border-radius:999px;position:relative;flex:none;animation:trackOn 4s ease-in-out infinite"><span style="position:absolute;top:2px;left:2px;width:16px;height:16px;border-radius:50%;background:#fff;animation:knobOn 4s ease-in-out infinite"></span></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-      <div class="rec-grid">
-        <div class="rec-card reveal">
-          <div class="rec-mock">
-            <div class="rec-mock-card">
-              <div class="rec-mock-head"><span class="rec-dot tool"></span> Better tool</div>
-              <div class="rec-mock-quote">"This would be much easier in Cursor."</div>
-              <div class="rec-mock-meta">
-                <span class="tool-pill from">ChatGPT</span>
-                <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9.5 4.5M13 8L9.5 11.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                <span class="tool-pill to">Cursor</span>
-              </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;max-width:1200px;margin:0 auto;padding:72px 56px;border-top:1px solid #EEEEF2">
+      <div style="display:flex;justify-content:center;order:1">
+        <div style="width:100%;max-width:460px;background:#0C0C0F;border-radius:14px;border:1px solid #23232B;box-shadow:0 30px 60px -34px rgba(12,12,15,.55);overflow:hidden">
+          <div style="display:flex;align-items:center;gap:9px;padding:12px 15px;border-bottom:1px solid #1E1E26"><svg viewBox="0 0 100 100" width="17" height="17"><g fill="#CC785C" transform="translate(50,50)"><rect x="-4" y="-44" width="8" height="88" rx="4"></rect><rect x="-4" y="-44" width="8" height="88" rx="4" transform="rotate(30)"></rect><rect x="-4" y="-44" width="8" height="88" rx="4" transform="rotate(60)"></rect><rect x="-4" y="-44" width="8" height="88" rx="4" transform="rotate(90)"></rect><rect x="-4" y="-44" width="8" height="88" rx="4" transform="rotate(120)"></rect><rect x="-4" y="-44" width="8" height="88" rx="4" transform="rotate(150)"></rect></g></svg><span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#CFCFDA">Claude</span></div>
+          <div style="padding:16px 16px 8px;display:flex;flex-direction:column;gap:7px">
+            <div style="align-self:flex-end;background:#1A1A22;color:#8686A0;font-size:12.5px;padding:8px 11px;border-radius:11px 11px 3px 11px;max-width:82%">Format this data as a weekly report…</div>
+            <div style="align-self:flex-end;background:#1A1A22;color:#8686A0;font-size:12.5px;padding:8px 11px;border-radius:11px 11px 3px 11px;max-width:82%">Format this data as a weekly report…</div>
+            <div style="align-self:flex-end;background:#23232B;color:#EDEDF2;font-size:13px;padding:9px 12px;border-radius:11px 11px 3px 11px;max-width:82%">Format this data as a weekly report…</div>
+          </div>
+          <div style="margin:6px 16px 16px;background:#15151E;border:1px solid #2A2A6A;border-radius:11px;padding:15px;animation:cardIn 6.5s ease-in-out infinite">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.05em;color:#9B9BFF;margin-bottom:8px">MITABLE · BETTER WORKFLOW</div>
+            <div style="font-size:13.5px;line-height:1.4;color:#EDEDF2;margin-bottom:11px">You've done this <b>5 times</b> this week. Save it as a one-click workflow from your library.</div>
+            <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:10px">
+              <div style="height:7px;border-radius:4px;background:#23232B;overflow:hidden"><div style="height:100%;background:#4A4AF0;animation:barFill 4s ease-in-out infinite"></div></div>
+              <div style="height:7px;border-radius:4px;background:#23232B;overflow:hidden"><div style="height:100%;background:#4A4AF0;animation:barFill 4s ease-in-out infinite;animation-delay:.4s"></div></div>
+              <div style="height:7px;border-radius:4px;background:#23232B;overflow:hidden"><div style="height:100%;background:#4A4AF0;animation:barFill 4s ease-in-out infinite;animation-delay:.8s"></div></div>
             </div>
+            <div style="display:flex;align-items:center;gap:8px"><span style="width:19px;height:19px;border-radius:6px;background:#4A4AF0;color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;animation:checkCycle 4s ease-in-out infinite">✓</span><span style="font-size:12.5px;font-weight:600;color:#9B9BFF">Workflow saved</span></div>
           </div>
-          <h3>Better tool</h3>
-          <p class="muted">When the tool you're in isn't the tool for the job, we point you to the one that is.</p>
         </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:16px;order:2">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.06em;color:#4A4AF0">BETTER WORKFLOW</span>
+        <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-size:32px;line-height:1.08;font-weight:700;letter-spacing:-.02em">You're probably using a fraction of what your tools can do.</h3>
+        <p style="font-size:17px;line-height:1.6;color:#585863">Most people dump everything into one long conversation and hope for the best. The people getting far better results are using skills, context files, memory, and the right model for the task. Mitable notices when there's a better way to work inside the tool you're already in — and sets it up for you.</p>
+      </div>
+    </div>
 
-        <div class="rec-card reveal" data-delay="120">
-          <div class="rec-mock">
-            <div class="rec-mock-card">
-              <div class="rec-mock-head"><span class="rec-dot workflow"></span> Better workflow</div>
-              <div class="rec-mock-quote">"You've done this five times this week. Let's automate it."</div>
-              <div class="rec-mock-meta repeat-meta">
-                <span class="repeat-tick"></span><span class="repeat-tick"></span><span class="repeat-tick"></span><span class="repeat-tick"></span><span class="repeat-tick"></span>
-                <span class="repeat-label">→ automated</span>
-              </div>
-            </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;max-width:1200px;margin:0 auto;padding:72px 56px;border-top:1px solid #EEEEF2">
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.06em;color:#4A4AF0">BETTER PROMPT</span>
+        <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-size:32px;line-height:1.08;font-weight:700;letter-spacing:-.02em">Get dramatically better results instantly.</h3>
+        <p style="font-size:17px;line-height:1.6;color:#585863">Great prompting isn't about memorizing frameworks. Mitable transforms your rough input into a structured, high-performing prompt right before you hit send.</p>
+      </div>
+      <div style="display:flex;justify-content:center">
+        <div style="width:100%;max-width:460px;background:#0C0C0F;border-radius:14px;border:1px solid #23232B;box-shadow:0 30px 60px -34px rgba(12,12,15,.55);overflow:hidden">
+          <div style="display:flex;align-items:center;gap:9px;padding:12px 15px;border-bottom:1px solid #1E1E26"><svg viewBox="0 0 100 100" width="17" height="17"><g fill="#CC785C" transform="translate(50,50)"><rect x="-4" y="-44" width="8" height="88" rx="4"></rect><rect x="-4" y="-44" width="8" height="88" rx="4" transform="rotate(30)"></rect><rect x="-4" y="-44" width="8" height="88" rx="4" transform="rotate(60)"></rect><rect x="-4" y="-44" width="8" height="88" rx="4" transform="rotate(90)"></rect><rect x="-4" y="-44" width="8" height="88" rx="4" transform="rotate(120)"></rect><rect x="-4" y="-44" width="8" height="88" rx="4" transform="rotate(150)"></rect></g></svg><span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#CFCFDA">Claude</span></div>
+          <div style="padding:14px 16px 6px">
+            <div style="background:#15151E;border:1px solid #23232B;border-radius:9px;padding:10px 12px;display:flex;align-items:center;gap:2px"><span style="font-size:13px;color:#7C7C8C">write a blog post about our launch</span><span style="width:2px;height:15px;background:#4A4AF0;display:inline-block;animation:blink 1s step-end infinite"></span></div>
           </div>
-          <h3>Better workflow</h3>
-          <p class="muted">Repetition is a signal. We spot it and hand you the automation.</p>
-        </div>
-
-        <div class="rec-card reveal" data-delay="240">
-          <div class="rec-mock">
-            <div class="rec-mock-card">
-              <div class="rec-mock-head"><span class="rec-dot prompt"></span> Better prompt</div>
-              <div class="rec-mock-quote">"Here's a prompt structure that gets dramatically better results."</div>
-              <div class="rec-mock-meta">
-                <span class="prompt-diff old">write summary</span>
-                <span class="prompt-diff new">role + context + format</span>
-              </div>
-            </div>
+          <div style="margin:6px 16px 16px;background:#15151E;border:1px solid #2A2A6A;border-radius:11px;padding:15px;animation:cardIn 6.5s ease-in-out infinite">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.05em;color:#9B9BFF;margin-bottom:9px">MITABLE · BETTER PROMPT</div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.55;color:#D7D7EA;background:#0C0C0F;border:1px solid #23232B;border-radius:8px;padding:11px 12px;margin-bottom:11px"><span style="color:#9B9BFF">Role:</span> senior content editor<br><span style="color:#9B9BFF">Goal:</span> 600-word launch post<br><span style="color:#9B9BFF">Audience:</span> beta users · <span style="color:#9B9BFF">Tone:</span> punchy</div>
+            <div style="display:flex;align-items:center;justify-content:space-between"><span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#8686A0">Clearer &amp; on-brand</span><span style="font-size:12.5px;font-weight:600;background:#4A4AF0;color:#fff;padding:7px 12px;border-radius:8px">Use prompt</span></div>
           </div>
-          <h3>Better prompt</h3>
-          <p class="muted">Small changes in structure, dramatic changes in output quality.</p>
         </div>
       </div>
     </div>
+  </div>
   </section>
 
-  <!-- ======================= SECTION 5 · OUTCOME ======================= -->
-  <section class="section section-outcome" id="outcome">
-    <div class="container">
-      <div class="section-head reveal">
-        <div class="eyebrow">The outcome</div>
-        <h2>Less time figuring AI out.<br /><span class="grad-text">More time doing what matters.</span></h2>
+  <!-- OUTCOME -->
+  <section style="border-top:1px solid #EAEAEF">
+  <div style="max-width:1200px;margin:0 auto;padding:92px 56px">
+    <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:40px;max-width:34em">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.08em;color:#4A4AF0">04 — THE OUTCOME</span>
+      <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:38px;line-height:1.08;font-weight:700;letter-spacing:-.025em">Less time trying to keep up. More time shipping.</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+      <div style="background:#fff;border:1px solid #E7E7EC;border-radius:14px;padding:30px">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.05em;color:#9A9AA4;margin-bottom:18px">LESS TIME</div>
+        <div style="display:flex;flex-direction:column;gap:13px">
+          <div style="display:flex;align-items:center;gap:11px;font-size:16px;color:#8A8A94"><span style="color:#B84A4A">×</span><span style="text-decoration:line-through">Accumulating bookmarks you'll never open</span></div>
+          <div style="display:flex;align-items:center;gap:11px;font-size:16px;color:#8A8A94"><span style="color:#B84A4A">×</span><span style="text-decoration:line-through">Re-learning tools after they update</span></div>
+          <div style="display:flex;align-items:center;gap:11px;font-size:16px;color:#8A8A94"><span style="color:#B84A4A">×</span><span style="text-decoration:line-through">Forcing yourself to remember complex prompts</span></div>
+        </div>
       </div>
-
-      <div class="outcome-grid">
-        <div class="outcome-col outcome-less reveal">
-          <h3>Less time</h3>
-          <ul>
-            <li>Watching tutorials</li>
-            <li>Searching Reddit</li>
-            <li>Saving LinkedIn posts</li>
-            <li>Fighting with prompts</li>
-            <li>Trying every model</li>
-          </ul>
-        </div>
-        <div class="outcome-divider reveal" data-delay="150" aria-hidden="true">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M12 4V20M12 20L5.5 13.5M12 20L18.5 13.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-        <div class="outcome-col outcome-more reveal" data-delay="150">
-          <h3>More time</h3>
-          <ul>
-            <li>Shipping</li>
-            <li>Solving interesting problems</li>
-            <li>Talking to customers</li>
-            <li>Thinking strategically</li>
-            <li>Going home earlier</li>
-          </ul>
+      <div style="background:#0C0C0F;border-radius:14px;padding:30px;color:#fff">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.05em;color:#9B9BFF;margin-bottom:18px">MORE TIME</div>
+        <div style="display:flex;flex-direction:column;gap:13px">
+          <div style="display:flex;align-items:center;gap:11px;font-size:16px"><span style="color:#9B9BFF">✓</span>Getting full performance from tools you pay for</div>
+          <div style="display:flex;align-items:center;gap:11px;font-size:16px"><span style="color:#9B9BFF">✓</span>Building real momentum and shipping actual work</div>
+          <div style="display:flex;align-items:center;gap:11px;font-size:16px"><span style="color:#9B9BFF">✓</span>Solving core problems and logging off on time</div>
         </div>
       </div>
     </div>
+  </div>
   </section>
 
-  <!-- ======================= SECTION 6 · TRUST ======================= -->
-  <section class="section section-trust" id="trust">
-    <div class="container narrow">
-      <div class="section-head reveal">
-        <div class="eyebrow">Trust</div>
-        <h2>Built to help — not interrupt.</h2>
-        <p class="section-sub">Most AI products try to be involved in everything. Mitable only steps in when it's genuinely worth your attention.</p>
-      </div>
-      <div class="trust-rows">
-        <div class="trust-row reveal">
-          <span class="trust-icon quiet-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="none"><path d="M4 10V14H8L13 19V5L8 10H4Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M17 9L21 15M21 9L17 15" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
-          </span>
-          <div>
-            <h4>If you're already using the best approach…</h4>
-            <p class="muted">You won't hear from us.</p>
-          </div>
-        </div>
-        <div class="trust-row reveal" data-delay="120">
-          <span class="trust-icon spark-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="none"><path d="M12 3L13.9 9.1L20 11L13.9 12.9L12 19L10.1 12.9L4 11L10.1 9.1L12 3Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
-          </span>
-          <div>
-            <h4>If there's a dramatically better one…</h4>
-            <p class="muted">You'll know exactly why.</p>
-          </div>
-        </div>
-      </div>
-    </div>
+  <!-- TRUST -->
+  <section style="border-top:1px solid #EAEAEF;background:#fff">
+  
   </section>
 
-  <!-- ======================= FINAL CTA ======================= -->
-  <section class="section section-cta" id="cta">
-    <div class="cta-glow" aria-hidden="true"></div>
-    <div class="container narrow">
-      <div class="reveal">
-        <h2 class="cta-title">Stop making AI your second job.</h2>
-        <p class="section-sub">Let Mitable bring the best AI workflows to you instead.</p>
-        <form class="cta-form" id="ctaForm" autocomplete="off">
-          <input type="email" placeholder="you@company.com" aria-label="Email address" required />
-          <button type="submit" class="btn btn-primary btn-lg">Join the beta</button>
-        </form>
-        <p class="cta-note" id="ctaNote">No spam. Just an invite when your spot opens up.</p>
-      </div>
-    </div>
+  <!-- CTA -->
+  <section id="cta" style="background:#0C0C0F;color:#fff;text-align:center">
+  <div style="max-width:640px;margin:0 auto;padding:100px 56px;display:flex;flex-direction:column;gap:22px;align-items:center">
+    <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:46px;line-height:1.05;font-weight:700;letter-spacing:-.03em">Keeping up with AI shouldn't feel like a second job.</h2>
+    <p style="font-size:19px;color:#9B9BB0;line-height:1.5">Stop letting better ways to work sit in your bookmarks. Let Mitable bring the best tools, workflows, and prompts into the work you're already doing.</p>
+    <sc-if value="{{ notDone }}" hint-placeholder-val="{{ true }}">
+      <form onSubmit="{{ onSubmit }}" style="display:flex;gap:10px;width:100%;max-width:460px;margin-top:6px">
+        <input value="{{ email }}" onChange="{{ onInput }}" type="email" required="" placeholder="you@work.com" style="flex:1;font-family:inherit;font-size:16px;padding:15px 18px;border-radius:11px;border:1px solid #2A2A34;background:#15151E;color:#fff">
+        <button type="submit" style="font-family:inherit;font-size:16px;font-weight:600;background:#4A4AF0;color:#fff;border:none;padding:15px 26px;border-radius:11px;cursor:pointer;white-space:nowrap">Start Using Mitable</button>
+      </form>
+    </sc-if>
+    <sc-if value="{{ done }}" hint-placeholder-val="{{ false }}">
+      <div style="margin-top:6px;background:rgba(155,155,255,.1);border:1px solid #2A2A6A;border-radius:11px;padding:16px 22px;display:flex;align-items:center;gap:11px"><span style="width:26px;height:26px;border-radius:7px;background:#4A4AF0;color:#fff;display:flex;align-items:center;justify-content:center;font-size:15px">✓</span><span style="font-size:16px">You're on the list — we'll reach out at <b>{{ email }}</b>.</span></div>
+    </sc-if>
+    <div style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#6B6B78">No spam. Just an invite when your spot opens.</div>
+  </div>
   </section>
 
-  <footer class="footer">
-    <div class="container footer-inner">
-      <span class="footer-logo">Mitable</span>
-      <span class="muted">© 2026 Mitable. All rights reserved.</span>
-    </div>
+  <footer style="background:#0C0C0F;border-top:1px solid #1E1E26;padding:26px 56px;display:flex;align-items:center;justify-content:space-between">
+    <div style="display:flex;align-items:center;gap:8px"><div style="width:19px;height:19px;border-radius:5px;background:#fff;display:flex;align-items:center;justify-content:center"><div style="width:7px;height:7px;background:#4A4AF0;transform:rotate(45deg)"></div></div><span style="font-family:'Bricolage Grotesque',sans-serif;font-size:16px;font-weight:600;color:#fff">Mitable</span></div>
+    <span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#6B6B78">© 2026 Mitable — bring the best AI to your work.</span>
   </footer>
 
-  <script src="script.js"></script>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:900}}">
+class Component extends DCLogic {
+  state = { email:'', done:false };
+  renderVals(){
+    return {
+      email:this.state.email, done:this.state.done, notDone:!this.state.done,
+      onInput:(e)=>{ const v=e.target.value; this.setState({email:v}); },
+      onSubmit:(e)=>{ e.preventDefault(); this.setState({done:true}); },
+    };
+  }
+}
+</script>
 </body>
 </html>
