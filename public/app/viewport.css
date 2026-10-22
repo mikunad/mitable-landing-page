@@ -1,0 +1,50 @@
+html,body{width:100%;height:100%;overflow:hidden;overscroll-behavior:none}
+body{position:fixed;inset:0}
+#app{position:absolute;top:var(--app-top,0px);left:0;right:0;width:100%;height:var(--app-height);min-height:0;margin:0 auto;overflow:hidden}
+.screen{height:100%;min-height:0;overflow:hidden}
+.app-nav,.progress,.screen>h1{flex:none}
+.profile-form{min-height:0;overflow:hidden;margin-top:clamp(16px,4dvh,36px)}
+.form-fields{display:flex;flex-direction:column;gap:24px;flex:1;min-height:0;overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;scroll-padding:16px;scrollbar-width:none}
+.preferences-content{flex:1;min-height:0;overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;scrollbar-width:none;margin-top:32px}
+.screen-action{position:static;flex:none;padding-top:18px}
+.map-view{height:100%;min-height:0;--drawer-height:clamp(260px,40%,340px)}
+.map-view.expanded{--drawer-height:min(540px,max(180px,calc(var(--app-height) - 280px)))}
+.map-header .brand{flex-shrink:0}
+.map-city{padding-left:0;padding-right:0}
+.map-city span{max-width:100px}
+.map-header{gap:8px}
+dialog{top:auto;bottom:max(0px,calc(100% - var(--app-top,0px) - var(--app-height)));max-height:calc(var(--app-height) - 16px);overflow:hidden}
+.sheet-inner{max-height:calc(var(--app-height) - 16px);overscroll-behavior:contain}
+.auth-screen{height:100%;min-height:0}
+.auth-content{flex:none;min-height:0;max-height:calc(100% - 140px);overflow-y:auto;overscroll-behavior:contain;scrollbar-width:none}
+.auth-screen .auth-brand{top:clamp(42px,8dvh,74px)}
+.auth-phone .auth-content{padding-bottom:clamp(24px,10dvh,86px)}
+.auth-code .auth-content{padding-bottom:8px}
+.auth-screen .auth-form,.auth-screen .auth-content>*{flex-shrink:0}
+.auth-screen .back-home{z-index:2}
+.keyboard-open .auth-brand,.keyboard-open .auth-phone h1,.keyboard-open .code-change{display:none}
+.keyboard-open .auth-screen{padding-top:16px;padding-bottom:max(16px,env(safe-area-inset-bottom))}
+.keyboard-open .auth-content{max-height:100%;padding:0;gap:8px}
+.keyboard-open .auth-form{gap:8px}
+.keyboard-open .code-instruction{font-size:16px;line-height:1.3}
+.keyboard-open .code-boxes span{height:48px}
+.keyboard-open .auth-screen .primary{min-height:48px;padding-top:12px;padding-bottom:12px}
+.keyboard-open .code-resend{min-height:28px;padding:4px 12px}
+.keyboard-open .code-hint{font-size:11px}
+.keyboard-open .screen:not(.auth-screen){padding-top:16px;padding-bottom:16px}
+.keyboard-open .app-nav{margin-bottom:12px}
+.keyboard-open .progress{margin-bottom:12px}
+.keyboard-open .screen>h1{font-size:26px;line-height:1.1}
+.keyboard-open .profile-form{margin-top:16px;gap:12px}
+.keyboard-open .screen-action{padding-top:12px;padding-bottom:0}
+.keyboard-open .screen-action .primary{min-height:48px;padding-top:12px;padding-bottom:12px}
+.keyboard-open .map-view{--drawer-height:clamp(150px,55%,250px)}
+.keyboard-open .map-header{display:none}
+.keyboard-open .map-search{display:flex;top:12px}
+.keyboard-open .plan-cover{display:none}
+@media(max-height:650px){.screen{padding-top:max(16px,env(safe-area-inset-top));padding-bottom:max(16px,env(safe-area-inset-bottom))}.app-nav{margin-bottom:18px}.progress{margin-bottom:18px}.screen>h1{font-size:28px}.form-fields{gap:20px}.preferences-content{margin-top:24px;gap:24px}.screen-action{padding-top:14px}.auth-screen .auth-brand{top:42px}.auth-content{max-height:calc(100% - 112px)}.auth-phone .auth-content{padding-bottom:12px}.auth-code .auth-content{padding-bottom:0;gap:8px}.auth-code .auth-form{gap:10px}.auth-code .code-instruction{font-size:17px}.auth-code .code-change{min-height:34px;padding:6px 12px}.auth-code .code-resend{min-height:34px;padding:6px 12px}.auth-code .code-boxes span{height:54px}}
+
+/* Keep a generous touch target while the 8-bit artwork stays compact. */
+.map-pin{width:44px;height:44px;filter:drop-shadow(0 1px 2px #19191933)}
+.map-pin svg{position:absolute;left:10px;bottom:0;width:24px;height:34px}
+.map-pin span{inset:13px 0 auto;font-size:11px;line-height:12px}

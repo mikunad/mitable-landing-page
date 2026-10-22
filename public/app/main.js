@@ -1,0 +1,78 @@
+import {DEMO_CODE,CITIES,emptyProfile,normalizePhone,validUsername,cityForInput,cityForCoordinates,safeRead,safeWrite,escapeHTML as e} from './model.js';
+import {INTERESTS,CUISINES,DIETS,ALLERGIES} from './data.js';
+import {brand,icon,action,field,chips,header} from './ui.js';
+import {mountMap} from './map-view.js';
+import {mountFilm} from '../components/film.js';
+import {mountViewport} from './viewport.js';
+import {mountSystemTheme} from '../components/theme.js';
+
+const root=document.querySelector('#app'),sheet=document.querySelector('#sheet');
+const systemTheme=mountSystemTheme();
+let profile={...emptyProfile(),...safeRead('mitable.profile',{})},session=safeRead('mitable.demoSession',null),phone=safeRead('mitable.demoPhone',''),cleanup=()=>{};
+const save=()=>safeWrite('mitable.profile',profile);
+const go=(path,replace=false)=>{sheet.close();history[replace?'replaceState':'pushState']({},'',path);render()};
+const error=(message,target=root)=>{const el=target.querySelector('[role=alert]');if(el)el.textContent=message};
+const closeButton=`<button type="button" class="icon-button" data-close aria-label="Close">${icon('close')}</button>`;
+function showSheet(title,content){sheet.innerHTML=`<div class="sheet-inner"><div class="sheet-title"><h2>${e(title)}</h2>${closeButton}</div>${content}</div>`;sheet.querySelector('[data-close]').onclick=()=>sheet.close();if(!sheet.open)sheet.showModal();sheet.querySelector('input')?.focus({preventScroll:true})}
+sheet.addEventListener('click',ev=>{if(ev.target===sheet){const r=sheet.getBoundingClientRect();if(ev.clientY<r.top||ev.clientX<r.left||ev.clientX>r.right)sheet.close()}});
+function bindNavigation(){root.querySelectorAll('[data-go]').forEach(b=>b.onclick=()=>go(b.dataset.go))}
+function bindChips(target,values){target.querySelectorAll('[data-choice]').forEach(b=>b.onclick=()=>{const key=b.dataset.group,value=b.dataset.choice;values[key]??=[];values[key]=values[key].includes(value)?values[key].filter(v=>v!==value):[...values[key],value];b.classList.toggle('selected',values[key].includes(value));b.setAttribute('aria-pressed',String(values[key].includes(value)))})}
+function phonePage(){
+ root.innerHTML=`<main class="screen auth-screen auth-phone"><video class="auth-film" autoplay muted loop playsinline preload="metadata" poster="/assets/couple-park-bench-poster.jpg" src="/assets/couple-park-bench.mp4" aria-hidden="true"></video><div class="auth-film-veil" aria-hidden="true"></div><a href="/" class="icon-button back-home" aria-label="Back to home">${icon('back')}</a><div class="auth-content"><div class="auth-brand">${brand()}</div><h1>Good plans start here.</h1><form class="auth-form"><label class="field"><span>Phone number</span><div class="phone-input"><select name="country" aria-label="Country code"><option value="+1">US +1</option><option value="+44">UK +44</option><option value="+33">FR +33</option><option value="+234">NG +234</option></select><input name="phone" type="tel" aria-label="Phone number" inputmode="tel" autocomplete="tel-national" placeholder="(415) 555-0123" required></div></label><p role="alert" class="error"></p>${action('Send code','type="submit"')}</form></div></main>`;
+ root.querySelector('form').onsubmit=ev=>{ev.preventDefault();const data=new FormData(ev.target);phone=normalizePhone(data.get('phone'),data.get('country'));if(!phone){error('Enter a valid phone number.');return}safeWrite('mitable.demoPhone',phone);safeWrite('mitable.codeSentAt',Date.now());go('/auth/code')};
+}
+function codePage(){
+ if(!phone){go('/auth/phone',true);return}
+ root.innerHTML=`<main class="screen auth-screen auth-code"><video class="auth-film" autoplay muted loop playsinline preload="metadata" poster="/assets/couple-park-bench-poster.jpg" src="/assets/couple-park-bench.mp4" aria-hidden="true"></video><div class="auth-film-veil" aria-hidden="true"></div><button class="icon-button back-home" data-go="/auth/phone" aria-label="Back">${icon('back')}</button><div class="auth-content"><div class="auth-brand">${brand()}</div><p class="code-instruction">Enter the code for<br><strong>${e(phone)}</strong></p><button class="text-button code-change" data-go="/auth/phone">Change number</button><form class="auth-form"><label class="code-control"><span class="visually-hidden">Six-digit code</span><input name="code" type="text" inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]{6}" maxlength="6" required autofocus><span class="code-boxes" aria-hidden="true">${'<span></span>'.repeat(6)}</span></label><p class="code-hint">Demo code: ${DEMO_CODE}</p><p role="alert" class="error"></p>${action('Continue','type="submit"')}</form><button class="text-button code-resend" type="button"></button></div></main>`;
+ const input=root.querySelector('[name=code]'),boxes=[...root.querySelectorAll('.code-boxes span')],resend=root.querySelector('.code-resend');
+ input.oninput=()=>{input.value=input.value.replace(/\D/g,'').slice(0,6);boxes.forEach((b,i)=>{b.textContent=input.value[i]||'';b.classList.toggle('current',i===Math.min(input.value.length,5))});error('')};input.oninput();
+ const tick=()=>{const left=Math.max(0,30-Math.floor((Date.now()-safeRead('mitable.codeSentAt',0))/1000));resend.disabled=left>0;resend.textContent=left?`Resend in ${left}s`:'Resend code'};tick();const timer=setInterval(tick,1000);cleanup=()=>clearInterval(timer);
+ resend.onclick=()=>{safeWrite('mitable.codeSentAt',Date.now());tick();input.value='';input.oninput();input.focus()};
+ root.querySelector('form').onsubmit=ev=>{ev.preventDefault();if(input.value!==DEMO_CODE){error('That code didn’t match. Try again.');input.focus();return}session={phone,demo:true};safeWrite('mitable.demoSession',session);const stored=safeRead('mitable.profiles',{});profile={...emptyProfile(),...(stored[phone]||{})};save();go(profile.complete?'/app':'/onboarding/profile',true)};
+}
+function chooseCity(onChoose){
+ showSheet('Your location',`<button class="outlined-row" type="button" data-locate><span>${icon('locate')}Use my location</span>${icon('arrow')}</button><label class="field"><span>City or ZIP code</span><input class="text-input" name="citySearch" autocomplete="address-level2" placeholder="Search a city or ZIP"></label><p class="region-note">Bay Area & DMV</p><p role="alert" class="error"></p><div class="city-options"></div>`);
+ const input=sheet.querySelector('input'),options=sheet.querySelector('.city-options');
+ const select=city=>{onChoose(city);sheet.close()};
+ const draw=()=>{const q=input.value.trim().toLowerCase(),exact=cityForInput(q),list=exact?[exact]:CITIES.filter(c=>c.name.toLowerCase().includes(q));options.innerHTML=list.length?list.map(c=>`<button class="city-option${profile.city?.name===c.name?' selected':''}" data-city="${e(c.name)}">${e(c.name)}${icon('right')}</button>`).join(''):'<p class="region-note">Choose a city in the Bay Area or DMV.</p>';options.querySelectorAll('button').forEach(b=>b.onclick=()=>select(CITIES.find(c=>c.name===b.dataset.city)))};
+ input.oninput=draw;draw();
+ sheet.querySelector('[data-locate]').onclick=()=>{const button=sheet.querySelector('[data-locate]');if(!navigator.geolocation){error('Location isn’t available. Choose a city below.',sheet);return}button.disabled=true;error('',sheet);navigator.geolocation.getCurrentPosition(({coords})=>{button.disabled=false;if(!sheet.open)return;const city=cityForCoordinates(coords.latitude,coords.longitude);if(city)select(city);else error('We’re in the Bay Area & DMV for now. Choose a city below.',sheet)},()=>{button.disabled=false;error('Location wasn’t available. Choose a city below.',sheet)},{timeout:10000,maximumAge:300000})};
+}
+function profilePage(edit=false){
+ root.innerHTML=`<main class="screen">${header(edit?null:1,edit?'/app':'/auth/phone')}<h1>${edit?'Your profile':'About you.'}</h1><form class="profile-form"><div class="form-fields"><div class="field-row">${field('First name','firstName',profile.firstName,'autocomplete="given-name" maxlength="50" required')}${field('Last name','lastName',profile.lastName,'autocomplete="family-name" maxlength="50" required')}</div>${field('Username','username',profile.username,'autocomplete="username" autocapitalize="none" spellcheck="false" placeholder="@you" maxlength="24" required')}<div class="field location-field"><span>Location</span><button type="button" class="outlined-row" data-location><span>${icon('locate')}<span data-city-label>${e(profile.city?.name||'Use my location')}</span></span>${icon('right')}</button><small class="region-note">Bay Area & DMV</small></div><p role="alert" class="error"></p></div><div class="screen-action">${action(edit?'Save':'Continue','type="submit"')}</div></form></main>`;
+ root.querySelector('[data-location]').onclick=()=>chooseCity(city=>{profile.city=city;root.querySelector('[data-city-label]').textContent=city.name});
+ root.querySelector('form').onsubmit=ev=>{ev.preventDefault();const d=new FormData(ev.target),first=d.get('firstName').trim(),last=d.get('lastName').trim(),username=d.get('username').trim().replace(/^@/,'').toLowerCase();if(!first||!last){error('Enter your first and last name.');return}if(!validUsername(username)){error('Use 3–24 letters, numbers, dots or underscores.');return}if(!profile.city){error('Choose your location.');return}Object.assign(profile,{firstName:first,lastName:last,username});persist();go(edit?'/app':'/onboarding/preferences')};
+}
+function foodSheet(update){
+ const draft={diet:[...profile.diet],allergies:[...(profile.allergies||[])]};let answered=profile.allergies!==null;
+ showSheet('Food preferences',`<section class="sheet-section"><h3>Diet</h3>${chips('diet',DIETS,draft.diet)}</section><section class="sheet-section"><h3>Allergies</h3><label class="sheet-row">None<input type="checkbox" name="none" ${answered&&!draft.allergies.length?'checked':''}></label>${chips('allergies',ALLERGIES,draft.allergies)}</section><label class="field"><span>Anything else to avoid?</span><textarea name="foodAvoid" maxlength="500" placeholder="Ingredients or other allergies">${e(profile.foodAvoid)}</textarea></label>${action('Done','type="button" data-done')}`);
+ bindChips(sheet,draft);sheet.querySelectorAll('[data-group=allergies] button').forEach(b=>b.addEventListener('click',()=>{answered=true;sheet.querySelector('[name=none]').checked=false}));
+ sheet.querySelector('[name=none]').onchange=ev=>{answered=ev.target.checked;if(answered){draft.allergies=[];sheet.querySelectorAll('[data-group=allergies] button').forEach(b=>{b.classList.remove('selected');b.setAttribute('aria-pressed','false')})}};
+ sheet.querySelector('[data-done]').onclick=()=>{Object.assign(profile,{diet:draft.diet,allergies:answered?draft.allergies:null,foodAvoid:sheet.querySelector('textarea').value.trim()});save();sheet.close();update()};
+}
+function moreSheet(update){
+ const draft={transport:[...profile.transport],access:[...profile.access],budget:[profile.budget]};
+ showSheet('A few more things',`<section class="sheet-section"><h3>Budget per person</h3>${chips('budget',['Any','Under $25','$25–50','$50–100','$100+'],draft.budget)}</section><section class="sheet-section"><h3>Getting around</h3>${chips('transport',['Walking','Transit','Driving','Cycling'],draft.transport)}<label class="sheet-row">I have a car<input name="car" type="checkbox" ${profile.car?'checked':''}></label></section><section class="sheet-section"><h3>Accessibility</h3>${chips('access',['Step-free','Less walking','Seating','Quiet spaces'],draft.access)}</section><label class="field"><span>Anything you’d skip?</span><textarea name="activityAvoid" maxlength="500" placeholder="Activities or places">${e(profile.activityAvoid)}</textarea></label>${action('Done','type="button" data-done')}`);
+ bindChips(sheet,draft);sheet.querySelectorAll('[data-group=budget] button').forEach(b=>b.addEventListener('click',()=>{draft.budget=[b.dataset.choice];sheet.querySelectorAll('[data-group=budget] button').forEach(x=>{x.classList.toggle('selected',x===b);x.setAttribute('aria-pressed',String(x===b))})}));
+ sheet.querySelector('[data-done]').onclick=()=>{Object.assign(profile,{transport:draft.transport,access:draft.access,budget:draft.budget[0],car:sheet.querySelector('[name=car]').checked,activityAvoid:sheet.querySelector('textarea').value.trim()});save();sheet.close();update()};
+}
+function preferencesPage(edit=false){
+ root.innerHTML=`<main class="screen">${header(edit?null:2,edit?'/app':'/onboarding/profile')}<h1>Your tastes.</h1><div class="preferences-content"><section class="pref-section"><h2>Interests</h2>${chips('interests',INTERESTS,profile.interests)}</section><section class="pref-section"><h2>Cuisines</h2>${chips('cuisines',CUISINES,profile.cuisines)}</section><button type="button" class="outlined-row" data-food><span><span>Diet & allergies<small>${e(foodSummary())}</small></span></span>${icon('right')}</button><button type="button" class="preferences-more" data-more><span>A few more things<small>Budget, getting around, accessibility</small></span>${icon('plus')}</button></div><div class="screen-action">${action(edit?'Save':'See plans','type="button" data-finish')}</div></main>`;
+ bindChips(root,profile);root.querySelector('[data-food]').onclick=()=>foodSheet(()=>{root.querySelector('[data-food] small').textContent=foodSummary()});root.querySelector('[data-more]').onclick=()=>moreSheet(()=>{});root.querySelector('[data-finish]').onclick=()=>{profile.complete=true;persist();go('/app',true)};
+}
+function foodSummary(){return[...profile.diet,...(profile.allergies||[])].join(', ')||(profile.allergies!==null?'No allergies':'Add preferences')}
+function persist(){save();const all=safeRead('mitable.profiles',{});if(session){all[session.phone]=profile;safeWrite('mitable.profiles',all)}}
+function profileMenu(){showSheet(profile.firstName,`<div class="profile-summary"><p>@${e(profile.username)} · ${e(profile.city.name)}</p></div><div class="sheet-menu"><button data-edit-profile>Your profile${icon('right')}</button><button data-edit-preferences>Your preferences${icon('right')}</button><button data-logout>Log out${icon('upRight')}</button></div><p class="sheet-copy">Demo · saved on this device</p>`);sheet.querySelector('[data-edit-profile]').onclick=()=>go('/app/profile');sheet.querySelector('[data-edit-preferences]').onclick=()=>go('/app/preferences');sheet.querySelector('[data-logout]').onclick=()=>{session=null;safeWrite('mitable.demoSession',null);go('/auth/phone')}}
+function render(){
+ cleanup();cleanup=()=>{};sheet.close();let path=location.pathname.replace(/\/$/,'');if(path==='/plan')path='/app';if(path==='/auth/sign-in')path='/auth/phone';
+ if(!path.startsWith('/auth/')&&!session){go('/auth/phone',true);return}
+ if(path==='/app'&&!profile.complete){go(profile.firstName&&profile.city?'/onboarding/preferences':'/onboarding/profile',true);return}
+ if(path==='/auth/code')codePage();else if(path==='/auth/phone')phonePage();else if(path.endsWith('/profile'))profilePage(path.startsWith('/app/'));else if(path.endsWith('/preferences'))preferencesPage(path.startsWith('/app/'));else cleanup=mountMap(root,profile,{onLocation:cb=>chooseCity(city=>{profile.city=city;persist();cb(city)}),onProfile:profileMenu});
+ const film=root.querySelector('.auth-film');if(film){const pageCleanup=cleanup,disposeFilm=mountFilm(root);cleanup=()=>{pageCleanup();disposeFilm()}}
+ systemTheme.sync();bindNavigation();window.scrollTo(0,0);document.title='mitable';
+}
+window.addEventListener('popstate',render);
+window.addEventListener('beforeinstallprompt',event=>event.preventDefault());
+if('serviceWorker'in navigator)navigator.serviceWorker.register('/sw.js').catch(()=>{});
+mountViewport();
+render();

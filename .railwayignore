@@ -1,0 +1,9 @@
+.env
+.env.*
+node_modules/
+test/
+README.md
+playwright.config.js
+scripts/
+test-results/
+playwright-report/

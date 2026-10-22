@@ -1,0 +1,43 @@
+.map-view{--drawer-preview-height:368px;--drawer-detail-height:560px;--drawer-peek-height:104px;--drawer-height:var(--drawer-preview-height)}
+.map-view.expanded{--drawer-height:var(--drawer-detail-height)}
+.map-view.drawer-peek{--drawer-height:var(--drawer-peek-height)}
+.itinerary-drawer{overflow:hidden;padding-bottom:max(12px,env(safe-area-inset-bottom))}
+.drawer-handle{height:44px;min-height:44px;flex:none;touch-action:none;cursor:grab;user-select:none;-webkit-user-select:none}
+.drawer-handle::before{width:36px;height:4px}
+.drawer-dragging .drawer-handle{cursor:grabbing}
+.drawer-heading{flex:none;min-height:40px;align-items:baseline;padding:0 24px 18px}
+.drawer-heading h1{font-size:24px;line-height:1.2}
+.drawer-heading small{font-size:12px}
+.plans-carousel{flex:none;align-items:stretch;gap:12px;padding:0 20px 4px;scroll-padding-inline:20px;touch-action:pan-x pan-y}
+.plan-card{width:calc(100% - 24px);height:auto;min-height:0;flex:none;border-radius:12px;border-width:1px}
+.plan-card.active{border-width:1px}
+.plan-cover{height:108px;min-height:108px;flex:none}
+.plan-card-content{flex:1;min-height:140px;padding:16px 18px;gap:8px}
+.plan-card h2{font-size:22px;line-height:1.2;letter-spacing:-.4px}
+.plan-card p{font-size:13px;line-height:1.4}
+.plan-card footer{padding-top:8px;font-size:14px;line-height:1.4}
+.carousel-dots{height:28px;min-height:28px;flex:none}
+.drawer-peek:not(.drawer-dragging) :is(.plans-carousel,.carousel-dots){visibility:hidden}
+.details-scroll{padding:0 24px 20px;scroll-padding-block:16px}
+.details-title{margin-bottom:12px;gap:20px}
+.details-title h1{font-size:26px;line-height:1.15;letter-spacing:-.5px}
+.plan-meta{font-size:13px;line-height:1.6;margin-bottom:22px}
+.stop-row{gap:14px;padding:8px 0}
+.stop-number{width:28px;height:28px;min-width:28px;font-size:14px}
+.stop-copy strong{font-size:17px;line-height:1.35}
+.stop-copy small{font-size:13px;line-height:1.5;margin-top:7px}
+.stop-hours{margin:0 0 0 42px}
+.stop-hours .hours{font-size:12px;line-height:1.5;min-height:32px;padding:5px 0}
+.travel{gap:14px;min-height:24px;margin:12px 0 16px;font-size:12px;line-height:1.5}
+.travel .icon{width:28px;height:17px}
+.drawer-action{padding:16px 24px max(12px,env(safe-area-inset-bottom))}
+.route-status{line-height:1.5;padding-top:8px}
+.expanded .itinerary-drawer{padding-bottom:0}
+.keyboard-open .map-view{--drawer-height:clamp(150px,55%,250px)}
+.keyboard-open :is(.drawer-heading,.carousel-dots){display:none}
+@media(max-height:700px){.plan-cover{height:88px;min-height:88px}.plan-card h2{font-size:20px}.plan-card-content{min-height:132px;padding:14px 16px}.drawer-heading{padding-bottom:14px}.drawer-heading h1{font-size:22px}}
+@media(prefers-reduced-motion:no-preference){
+ .itinerary-drawer{transition:height .24s cubic-bezier(.2,.8,.2,1)}
+ .map-canvas,.map-locate{transition:bottom .24s cubic-bezier(.2,.8,.2,1)}
+ .drawer-dragging :is(.itinerary-drawer,.map-canvas,.map-locate){transition:none}
+}
