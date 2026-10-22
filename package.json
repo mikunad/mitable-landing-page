@@ -1,13 +1,18 @@
 {
-  "name": "mitable-landing-page",
+  "name": "mitable-web",
+  "version": "1.0.0",
   "private": true,
-  "scripts": {
-    "start": "serve -s . -l ${PORT:-3000}"
-  },
-  "dependencies": {
-    "serve": "^14.2.4"
-  },
+  "type": "module",
   "engines": {
-    "node": ">=20"
+    "node": ">=22"
+  },
+  "scripts": {
+    "start": "node server.mjs",
+    "dev": "node --watch server.mjs",
+    "test": "node --test test/*.test.mjs",
+    "test:e2e": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.62.1"
   }
 }

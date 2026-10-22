@@ -1,0 +1,20 @@
+.auth-screen{isolation:isolate;justify-content:flex-end;min-height:max(560px,100svh);color:#f7f5ef;background:#151916 url('/assets/couple-park-bench-poster.jpg') center/cover no-repeat;overflow:hidden}
+.auth-film,.auth-film-veil{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.auth-film{object-fit:cover;object-position:center;background:#151916 url('/assets/couple-park-bench-poster.jpg') center/cover no-repeat;z-index:-2;opacity:0}
+.auth-film[data-playing]{opacity:1}
+.auth-film-veil{z-index:-1;background:linear-gradient(180deg,#10141288 0%,#10141211 27%,#10141244 48%,#101412be 68%,#101412ee 100%)}
+.auth-screen .auth-content{padding:0 0 38px;gap:14px}
+.auth-screen .auth-brand{position:absolute;top:calc(74px + env(safe-area-inset-top));left:50%;transform:translateX(-50%);margin:0}
+.auth-screen .auth-brand,.auth-screen h1,.auth-screen .code-instruction,.auth-screen .text-button{color:#fff}
+.auth-screen .field{color:#f7f5ef}
+.auth-screen .phone-input,.auth-screen .phone-input input,.auth-screen .phone-input select,.auth-screen .code-boxes{color:var(--ink)}
+.auth-screen .code-hint,.auth-screen .code-resend{color:#f7f5ef}
+.auth-screen .auth-content h1{margin:0 0 8px;text-align:center}
+.auth-screen .auth-form{gap:14px}
+.auth-screen .code-instruction{margin:0}
+.auth-screen .code-change{margin-top:-10px}
+.auth-screen .back-home{color:#fff}
+.auth-screen .error{color:#ffb2a7}
+@media(prefers-color-scheme:dark){.auth-screen .phone-input,.auth-screen .code-boxes span{background:#242424;color:#f7f5ef;border-color:#3b3b38}.auth-screen .phone-input input,.auth-screen .phone-input select{color:#f7f5ef}.auth-screen .phone-input input::placeholder{color:#aaa6a0}}
+@media(max-height:650px){.auth-screen .auth-content{padding-bottom:12px;gap:9px}.auth-screen .auth-brand{top:58px}}
+@media(prefers-reduced-motion:reduce){.auth-film{display:none}.auth-screen{background:#151916 url('/assets/couple-park-bench-poster.jpg') center/cover no-repeat}}
