@@ -22,10 +22,10 @@ https://www.pexels.com/video/people-having-a-picnic-at-a-park-7859726/
 Local: picnic.mp4, picnic-poster.jpg, picnic-mobile.mp4, picnic-mobile-poster.jpg
 Video exports use the original 3840×2160 source; the phone version is cropped for portrait screens.
 
-National Mall video and poster: In Old News LLC / Pexels
-https://www.pexels.com/video/people-enjoying-the-national-mall-washington-dc-29188232/
-Local: national-mall.mp4, national-mall-poster.jpg, national-mall-mobile.mp4, national-mall-mobile-poster.jpg
-Video exports use the original 3840×2160 source; the phone version is cropped for portrait screens.
+Golden Gate Bridge video and poster: Offgrideli / Pexels
+https://www.pexels.com/video/golden-gate-bridge-view-14623480/
+Local: golden-gate-desktop.mp4, golden-gate-desktop-poster.jpg, golden-gate-mobile.mp4, golden-gate-mobile-poster.jpg
+Video exports use the original 3840×2160 source. The phone version follows the walkers through a portrait crop.
 
 License: https://www.pexels.com/license/
 Pexels permits free commercial website use, editing and cropping. Attribution is not required. No endorsement by the people shown is claimed.
