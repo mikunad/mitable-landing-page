@@ -69,7 +69,7 @@ function render(){
  if(path==='/app'&&!profile.complete){go(profile.firstName&&profile.city?'/onboarding/preferences':'/onboarding/profile',true);return}
  if(path==='/auth/code')codePage();else if(path==='/auth/phone')phonePage();else if(path.endsWith('/profile'))profilePage(path.startsWith('/app/'));else if(path.endsWith('/preferences'))preferencesPage(path.startsWith('/app/'));else cleanup=mountMap(root,profile,{onLocation:cb=>chooseCity(city=>{profile.city=city;persist();cb(city)}),onProfile:profileMenu});
  const film=root.querySelector('.auth-film');if(film){const pageCleanup=cleanup,disposeFilm=mountFilm(root);cleanup=()=>{pageCleanup();disposeFilm()}}
- systemTheme.sync();bindNavigation();window.scrollTo(0,0);document.title='mitable';
+ systemTheme.sync();bindNavigation();window.scrollTo(0,0);document.title='daytrip';
 }
 window.addEventListener('popstate',render);
 window.addEventListener('beforeinstallprompt',event=>event.preventDefault());
